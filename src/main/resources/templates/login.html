@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments.html :: defaultHead(${scripts}, ${styles})}"></head>
+<body>
+<ion-app>
+    <ion-content class="ion-padding">
+        <div class="vertical-center">
+            <ion-grid id="main-grid">
+                <ion-title class="ion-center">Login</ion-title>
+                <ion-input id="username" label="Username" clear-input="true"></ion-input>
+                <ion-input id="password" label="Password" type="password" clear-input="true"></ion-input>
+                <ion-button onclick="navigation.home($('#username'), $('#password'));">Continue</ion-button>
+            </ion-grid>
+        </div>
+    </ion-content>
+</ion-app>
+</body>
+</html>

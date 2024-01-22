@@ -1,0 +1,29 @@
+#main-grid {
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.vertical-center {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.ion-center {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+ion-title {
+    padding: 0 0 10px 0;
+}
+
+ion-button {
+    float: right;
+    margin-top: 15px;
+}
+
+ion-icon.with-text {
+    margin-right: 5px;
+}

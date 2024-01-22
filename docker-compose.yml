@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  f1-challenge:
+    container_name: f1challenge
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rgq/f1challenge
+    ports:
+      - "8081:8081"

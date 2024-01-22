@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments.html :: defaultHead(${scripts}, ${styles})}"></head>
+<body>
+<ion-app>
+    <ion-header th:insert="~{fragments.html :: headerView(${breadcrumbs})}"></ion-header>
+    <ion-content class="ion-padding">
+        <ion-grid id="main-grid">
+            <ion-button onclick="navigation.newSeason();">
+                <ion-icon name="add" class="with-text"></ion-icon>
+                New Season
+            </ion-button>
+        </ion-grid>
+    </ion-content>
+</ion-app>
+</body>
+</html>

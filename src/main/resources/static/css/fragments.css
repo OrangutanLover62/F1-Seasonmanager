@@ -1,0 +1,19 @@
+#headerView ion-breadcrumb:first-child {
+    margin-left: auto;
+}
+
+#headerView ion-breadcrumb:last-child {
+    margin-right: auto;
+}
+
+.driverView ion-avatar {
+    width: 100%;
+    height: 100%;
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.driverView ion-label {
+    font-weight: 400;
+    font-size: 15px;
+}

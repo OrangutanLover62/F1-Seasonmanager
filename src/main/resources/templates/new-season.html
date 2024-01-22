@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments.html :: defaultHead(${scripts}, ${styles})}"></head>
+<body>
+<ion-app>
+    <ion-header th:insert="~{fragments.html :: headerView(${breadcrumbs})}"></ion-header>
+    <ion-content class="ion-padding">
+        <ion-grid id="main-grid">
+            <ion-title>
+                <ion-input id="seasonName" label="Season Name"></ion-input>
+            </ion-title>
+            <ion-accordion-group>
+                <ion-accordion value="races">
+                    <ion-item slot="header">
+                        <ion-label>Races</ion-label>
+                    </ion-item>
+                    <div slot="content">
+                        ToDo: Build trackView
+
+
+                        <ion-list id="allTracks">
+                            <ion-title class="ion-center">All Races</ion-title>
+                        </ion-list>
+                        <ion-list id="selectedTracks">
+                            <ion-title class="ion-center">Selected Races</ion-title>
+                        </ion-list>
+                    </div>
+                </ion-accordion>
+                <ion-accordion value="drivers">
+                    <ion-item slot="header">
+                        <ion-label>Drivers</ion-label>
+                    </ion-item>
+                    <div slot="content">
+                        <ion-segment id="driverSegment" value="newDriver">
+                            <ion-segment-button value="newDriver">
+                                <ion-label>New Driver</ion-label>
+                            </ion-segment-button>
+                            <ion-segment-button value="searchDriver">
+                                <ion-label>Search Driver</ion-label>
+                            </ion-segment-button>
+                        </ion-segment>
+                        <ion-list id="newDriver">
+                            <ion-item>
+                                <ion-input id="firstname" label="Firstname" clear-input="true"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input id="lastname" label="Lastname" clear-input="true"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input id="imageBase64" label="Image Base64" clear-input="true"></ion-input>
+                            </ion-item>
+                            <ion-button onclick="newSeason.newDriver($('#newDriver'), $('#allDrivers'));">
+                                <ion-icon name="add" class="with-text"></ion-icon>
+                                Create Driver
+                            </ion-button>
+                        </ion-list>
+                        <ion-list id="searchDriver" style="display: none;">
+                            <ion-item>
+                                <ion-input label="Search by name"></ion-input>
+                            </ion-item>
+                            <ion-button onclick="newSeason.searchDriver($('#searchDriver'));">
+                                <ion-icon name="search"></ion-icon>
+                            </ion-button>
+                        </ion-list>
+                        <ion-list id="allDrivers">
+                            <ion-title class="ion-center">Selected Drivers</ion-title>
+                        </ion-list>
+                    </div>
+                </ion-accordion>
+            </ion-accordion-group>
+        </ion-grid>
+        <ion-button onclick="newSeason.createSeason()" expand="full">Create New Season</ion-button>
+
+
+        <ion-alert id="alertNewDriver" header="Invalid Driver"
+                   message="Please fill out all required fields"></ion-alert>
+        <ion-alert id="alertSearchDriver" header="Nothing found"
+                   message="There is no driver with this name"></ion-alert>
+    </ion-content>
+</ion-app>
+</body>
+</html>

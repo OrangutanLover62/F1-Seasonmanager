@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="defaultHead(scripts, styles)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Challenge</title>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <!-- ionic -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
+    <!-- thymeleaf -->
+    <script th:each="script : ${scripts}" th:src="${script}" defer></script>
+    <script th:src="@{/js/api.js}" defer></script>
+    <script th:src="@{/js/navigation.js}" defer></script>
+    <link rel="stylesheet" th:each="style : ${styles}" th:href="${style}"/>
+    <link rel="stylesheet" th:href="@{/css/override.css}"/>
+    <link rel="stylesheet" th:href="@{/css/fragments.css}"/>
+</head>
+<body>
+
+<ion-toolbar th:fragment="headerView(breadcrumbs)" id="headerView">
+    <ion-breadcrumbs>
+        <ion-breadcrumb th:each="breadcrumb : ${breadcrumbs}"
+                        th:href="${breadcrumb.path}" th:text="${breadcrumb.label}">
+        </ion-breadcrumb>
+    </ion-breadcrumbs>
+</ion-toolbar>
+
+<ion-chip th:fragment="driverView(driver)" th:id="${driver.id}" class="driverView">
+    <ion-avatar>
+        <img th:src="${driver.imageBase64}"/>
+    </ion-avatar>
+    <ion-label th:text="${driver.firstname + ' ' + driver.lastname}"></ion-label>
+    <ion-icon name="close-circle" size="large"
+              onclick="$(this).closest('.driverView').remove();"></ion-icon>
+</ion-chip>
+
+<ion-list th:fragment="searchResultView(results)" class="searchResultView">
+    <ion-item th:each="result : ${results}" th:id="${result.id}">
+        <ion-label th:text="${result.label}"></ion-label>
+    </ion-item>
+</ion-list>
+
+
+<ion-list th:fragment="trackView(track)" class="trackView">
+    <ion-item th:id="${track.id}">
+        <ion-label th:text="${track.name}"></ion-label>
+    </ion-item>
+</ion-list>
+
+<ion-list th:fragment="raceCreationView(race)" th:id="'raceFragment' + ${race.id}" class="raceCreationView">
+    <ion-item th:id="${race.id}">
+        <ion-label th:text="${race.track.name}"></ion-label>
+    </ion-item>
+    <label>Laps:</label>
+    <input type="number" th:id="'laps' + ${race.id}" th:name="'laps' + ${race.id}" min="1" required />
+    <input type="hidden" th:id="'trackId' + ${race.id}" th:value="${race.track.id}" />
+    <input type="hidden" th:id="'trackName' + ${race.id}" th:value="${race.track.name}" />
+    <input type="hidden" th:id="'trackCountry' + ${race.id}" th:value="${race.track.country}" />
+    <input type="hidden" th:id="'trackImage' + ${race.id}" th:value="${race.track.imageBase64}" />
+</ion-list>
+
+
+</body>
+</html>

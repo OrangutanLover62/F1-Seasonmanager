@@ -1,0 +1,30 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="F1ChallengeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <additionalParameters>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="server.port" />
+        <option name="value" value="8080" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="spring.data.mongodb.uri" />
+        <option name="value" value="mongodb://localhost:27017/f1challenge" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="f1challenge.auth.active" />
+        <option name="value" value="false" />
+      </param>
+    </additionalParameters>
+    <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+    <module name="F1Challenge" />
+    <selectedOptions>
+      <option name="spring.boot.profiles" visible="false" />
+    </selectedOptions>
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.rgq.f1challenge.F1ChallengeApplication" />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="clean install local" run_configuration_type="MavenRunConfiguration" />
+    </method>
+  </configuration>
+</component>
