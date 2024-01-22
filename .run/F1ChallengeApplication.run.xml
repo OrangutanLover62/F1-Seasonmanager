@@ -22,7 +22,7 @@
     <selectedOptions>
       <option name="spring.boot.profiles" visible="false" />
     </selectedOptions>
-    <option name="SPRING_BOOT_MAIN_CLASS" value="com.rgq.f1challenge.F1ChallengeApplication" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.f1manager.F1ChallengeApplication" />
     <method v="2">
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="clean install local" run_configuration_type="MavenRunConfiguration" />
     </method>
