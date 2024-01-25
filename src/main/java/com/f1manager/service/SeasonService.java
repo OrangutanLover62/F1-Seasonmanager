@@ -75,7 +75,7 @@ public class SeasonService {
         newSeason.setName(name);
 
 
-        List<RaceDao> convertedRaces = new ArrayList<RaceDao>();
+        List<RaceDao> convertedRaces = new ArrayList<>();
         for (RaceDto race : races
         ) {
             RaceDao raceToAdd = raceService.dtoDaoConverter(race);
@@ -83,7 +83,7 @@ public class SeasonService {
             convertedRaces.add(raceToAdd);
         }
 
-        List<DriverDao> convertedDrivers = new ArrayList<DriverDao>();
+        List<DriverDao> convertedDrivers = new ArrayList<>();
         for (DriverDto driver : drivers
         ) {
             convertedDrivers.add(driverService.dtoDaoConverter(driver));
@@ -91,8 +91,7 @@ public class SeasonService {
 
         newSeason.setRaces(convertedRaces);
         newSeason.setDrivers(convertedDrivers);
-
-        seasonRepository.save(newSeason);
+        seasonRepository.insert(newSeason);
         return daoDtoConverter(newSeason);
     }
 

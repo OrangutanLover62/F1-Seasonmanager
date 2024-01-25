@@ -105,7 +105,6 @@ const newSeason = (function () {
                 }
 
             var seasonName = document.getElementById('seasonName').value;
-            console.log(drivers)
             api.createSeason(seasonName, races, drivers);
 
         }

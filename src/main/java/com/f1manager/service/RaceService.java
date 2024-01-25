@@ -26,9 +26,8 @@ public class RaceService {
         return new RaceDao()
             .setId(raceDto.getId())
             .setLaps(raceDto.getLaps())
+            .setSeasonId(raceDto.getSeasonId())
             .setTrack(trackService.dtoDaoConverter(raceDto.getTrack()));
-            //.setTrack(raceDto.getTrack()::daoDtoConverter)
-            //.setSeason(raceDto.getSeason());
     }
 
     public RaceDto daoDtoConverter(RaceDao raceDao) {
