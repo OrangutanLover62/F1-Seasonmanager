@@ -54,7 +54,7 @@ public class DriverController {
     }
 
 
-    @GetMapping("/findById")
+    @PostMapping("/findById")
     public DriverDto findById(
             @RequestParam(required = true) String id)
     { return driverService.findById(id); }

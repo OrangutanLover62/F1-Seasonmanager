@@ -65,7 +65,7 @@ const api = (function () {
             return post('/race/creationEditor', payload);
         },
         getDriverDto: function (id) {
-            return get('/driver/findById?id=' + id);
+            return syncpost('/driver/findById?id=' + id);
         },
         getRaceDto: function (id, laps, track) {
             return syncpost('/race/generateById?id=' + id + '&laps=' + laps, track);
@@ -79,6 +79,7 @@ const api = (function () {
                 races: races,
                 drivers: drivers
             };
+
             return post('/season/create', payload);
         }
     };

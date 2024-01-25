@@ -93,7 +93,6 @@ public class SeasonService {
         newSeason.setDrivers(convertedDrivers);
 
         seasonRepository.save(newSeason);
-
         return daoDtoConverter(newSeason);
     }
 

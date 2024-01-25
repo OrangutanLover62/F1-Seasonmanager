@@ -92,7 +92,7 @@ const newSeason = (function () {
                         country: document.getElementById('trackCountry' + raceId).value,
                         imageBase64: document.getElementById('trackImage' + raceId).value
                     };
-                    var raceDtos = await api.getRaceDto(raceId, lapsValue, track)
+                    var raceDtos = await api.getRaceDto(raceId, lapsValue, track);
                     races.push(raceDtos);
                 }
 
@@ -100,13 +100,12 @@ const newSeason = (function () {
             var driverFragments = document.getElementsByClassName('driverView');
                 for (var i = 0; i < driverFragments.length; i++) {
                     var fragment = driverFragments[i];
-                    api.getDriverDto(fragment.id).done(function (response){
-                        drivers.push(response);
-                    });
+                    var driverDtos = await api.getDriverDto(fragment.id);
+                    drivers.push(driverDtos);
                 }
 
             var seasonName = document.getElementById('seasonName').value;
-            console.log(races.length)
+            console.log(drivers)
             api.createSeason(seasonName, races, drivers);
 
         }

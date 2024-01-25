@@ -13,6 +13,6 @@ public class RaceDto {
     private String id;
     private int laps;
     private TrackDto track;
-    private SeasonDto season;
+    private String seasonId;
     private String html;
 }
