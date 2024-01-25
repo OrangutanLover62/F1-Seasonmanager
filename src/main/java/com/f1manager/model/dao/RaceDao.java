@@ -19,7 +19,7 @@ public class RaceDao {
     private String id;
     private int laps;
     private TrackDao track;
-    private SeasonDao season;
+    private String seasonId;
     private ResultDao result;
     @Field(targetType = FieldType.DATE_TIME)
     private LocalDateTime finished;

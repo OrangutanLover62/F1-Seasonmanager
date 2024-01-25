@@ -15,5 +15,6 @@ import java.util.Map;
 public class ResultDao {
     @Id
     private String id;
+    private String raceId;
     private Map<DriverDao, Integer> positions;
 }

@@ -79,7 +79,7 @@ public class SeasonService {
         for (RaceDto race : races
         ) {
             RaceDao raceToAdd = raceService.dtoDaoConverter(race);
-            raceToAdd.setSeason(newSeason);
+            raceToAdd.setSeasonId(newSeason.getId());
             convertedRaces.add(raceToAdd);
         }
 
