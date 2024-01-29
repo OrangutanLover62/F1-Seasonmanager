@@ -3,6 +3,7 @@ package com.f1manager.service;
 import com.f1manager.model.dao.DriverDao;
 import com.f1manager.model.dao.RaceDao;
 import com.f1manager.model.dao.SeasonDao;
+import com.f1manager.model.dto.TrackDto;
 import com.f1manager.repository.SeasonRepository;
 import com.f1manager.repository.TrackRepository;
 import com.f1manager.model.dao.TrackDao;
@@ -129,8 +130,8 @@ public class SeasonService {
 
 
 
-    public Optional<TrackDao> findById(String id) {
-        return trackRepository.findById(id);
+    public SeasonDto findById(String id) {
+        return daoDtoConverter(seasonRepository.findById(id).orElseThrow(null));
     }
 
     public List<SeasonDto> findAll() {

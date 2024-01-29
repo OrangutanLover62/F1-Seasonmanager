@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments.html :: defaultHead(${scripts}, ${styles})}"></head>
+<body>
+<ion-app>
+    <ion-header th:insert="~{fragments.html :: headerView(${breadcrumbs})}"></ion-header>
+    <ion-content class="ion-padding">
+
+        <h1 th:text="${name}"></h1>
+
+
+        <ion-card th:each="race : ${races}">
+            <img alt="Track Image" th:src="${race.track.imageBase64}" />
+            <ion-card-header>
+                <ion-card-title th:text="${race.track.name}"></ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                Eventdate? Top3?
+            </ion-card-content>
+            <ion-button fill="clear">View Results</ion-button>
+        </ion-card>
+
+
+
+
+        <!-- Iterate over the data and display it -->
+        <ul>
+            <span th:text="${seasonId}"></span>
+        </ul>
+
+        <ul>
+            <li th:each="race : ${races}">
+                <span th:text="${race.track.name}"></span>
+            </li>
+        </ul>
+
+    </ion-content>
+</ion-app>
+</body>
+</html>
