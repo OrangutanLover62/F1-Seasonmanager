@@ -81,6 +81,14 @@ const api = (function () {
             };
 
             return post('/season/create', payload);
+        },
+        editRaceResults: function (race, drivers) {
+            let payload = {
+                race: race,
+                drivers: drivers
+            };
+
+            return post('/edit/race', payload);
         }
     };
 })();

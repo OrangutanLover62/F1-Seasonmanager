@@ -1,6 +1,8 @@
 package com.f1manager.controller.web;
 
 import com.f1manager.model.dao.TrackDao;
+import com.f1manager.model.dto.RaceDto;
+import com.f1manager.model.dto.SeasonCreationDto;
 import com.f1manager.model.dto.SeasonDto;
 import com.f1manager.service.SeasonService;
 import com.f1manager.service.TrackService;
@@ -8,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Driver;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Controller
@@ -18,6 +23,8 @@ public class NavigationController {
     public static final String pathHome = "/private/home";
     public static final String pathNewSeason = "/private/new/season";
     public static final String pathEditSeason = "/private/edit/season";
+    public static final String pathEditRace = "/private/edit/race";
+
     @Autowired
     private final TrackService trackService;
     private final SeasonService seasonService;
@@ -57,6 +64,19 @@ public class NavigationController {
         model.addAttribute("name", season.getName());
         model.addAttribute("races", season.getRaces());
         model.addAttribute("drivers", season.getDrivers());
+
+        return GlobalControllerAdvice.getTemplate(pathEditSeason);
+    }
+
+    @GetMapping(pathEditRace)
+    public String editRace(
+            @RequestBody(required = true) RaceDto race,
+            @RequestBody(required = true) ArrayList<Driver> drivers,
+            Model model ) {
+
+        model.addAttribute("id", race.getId());
+        model.addAttribute("track", race.getTrack());
+        model.addAttribute("drivers", drivers);
 
         return GlobalControllerAdvice.getTemplate(pathEditSeason);
     }

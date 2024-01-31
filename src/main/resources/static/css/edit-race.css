@@ -1,0 +1,13 @@
+#allDrivers {
+    padding: 0 0 0 15px;
+}
+
+#searchDriver ion-button {
+    position: relative;
+    top: -55px;
+    z-index: 10;
+}
+
+.searchResultView {
+    width: 500px;
+}
