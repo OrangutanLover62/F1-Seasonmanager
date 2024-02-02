@@ -1,5 +1,6 @@
 package com.f1manager.controller.rest;
 
+import com.f1manager.model.dto.SeasonDto;
 import com.f1manager.service.ErrorService;
 import com.f1manager.model.dto.SeasonCreationDto;
 import com.f1manager.service.SeasonService;
@@ -28,5 +29,19 @@ public class SeasonController {
             return errorService.handle(e);
         }
     }
+
+    @GetMapping("/byId")
+    public SeasonDto getSeason(
+            @RequestParam(required = true) String id
+    )
+    {
+        try {
+            return seasonService.findById(id);
+        } catch (Exception e) {
+            System.out.println("error");
+            return null;
+        }
+    }
+
 
 }

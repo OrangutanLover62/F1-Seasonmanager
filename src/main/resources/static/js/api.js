@@ -67,12 +67,18 @@ const api = (function () {
         getDriverDto: function (id) {
             return syncpost('/driver/findById?id=' + id);
         },
-        getRaceDto: function (id, laps, track) {
+        postRaceDto: function (id, laps, track) {
             return syncpost('/race/generateById?id=' + id + '&laps=' + laps, track);
         },
-        getTrackDto: function (id) {
-            return get('/track/byId?id=' + id);
+        getRaceDto: function (id) {
+            return get('/race/findById?id=' + id);
         },
+        getTrackDto: function (id) {
+            return get('/season/byId?id=' + id);
+        },
+        getSeasonDto: function (id) {
+                    return get('/season/byId?id=' + id);
+                },
         createSeason: function (seasonName, races, drivers) {
             let payload = {
                 name: seasonName,
@@ -82,12 +88,15 @@ const api = (function () {
 
             return post('/season/create', payload);
         },
-        editRaceResults: function (race, drivers) {
+        editRaceResults: function (race, track, drivers) {
             let payload = {
                 race: race,
+                track: track,
                 drivers: drivers
             };
-
+            console.log(race);
+            console.log(track);
+            console.log(drivers);
             return post('/edit/race', payload);
         }
     };

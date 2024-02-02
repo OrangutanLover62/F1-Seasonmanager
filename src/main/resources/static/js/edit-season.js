@@ -1,10 +1,12 @@
 const editSeason = (function () {
 
     return {
-        editRace: function (raceId, track, drivers) {
-            console.log(raceId);
-            console.log(drivers);
-            // api.editRaceResults(race, drivers);
+        editRace: async function (raceId, seasonId) {
+            var season = await api.getSeasonDto(seasonId);
+            var drivers = season.drivers;
+            var race = await api.getRaceDto(raceId);
+            var track = race.track;
+            api.editRaceResults(race, track, drivers);
         }
     };
 })(); // Invoke the function to create an instance of editSeason

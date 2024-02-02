@@ -1,7 +1,9 @@
 package com.f1manager.controller.rest;
 
+import com.f1manager.model.dao.RaceDao;
 import com.f1manager.model.dto.RaceDto;
 import com.f1manager.model.dto.TrackDto;
+import com.f1manager.repository.RaceRepository;
 import com.f1manager.service.ErrorService;
 import com.f1manager.service.TrackService;
 import com.f1manager.service.RaceService;
@@ -9,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -53,5 +56,17 @@ public class RaceController {
                 .setId(id)
                 .setLaps(laps)
                 .setTrack(track);
+    }
+
+    @GetMapping("/findById")
+    public RaceDto getById(
+            @RequestParam(required = true) String id
+    ) {
+        try {
+
+            return raceService.findById(id);
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

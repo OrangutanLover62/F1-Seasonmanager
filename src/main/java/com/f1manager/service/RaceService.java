@@ -55,12 +55,13 @@ public class RaceService {
         ));
     }
 
-
-
-
     public RaceDto buildHtml(RaceDto raceDto) {
         return raceDto.setHtml(fragmentService.render(
             "raceView", Collections.singletonMap("race", raceDto)
         ));
+    }
+
+    public RaceDto findById(String id){
+        return daoDtoConverter(raceRepository.findById(id).orElse(null)) ;
     }
 }

@@ -92,7 +92,7 @@ const newSeason = (function () {
                         country: document.getElementById('trackCountry' + raceId).value,
                         imageBase64: document.getElementById('trackImage' + raceId).value
                     };
-                    var raceDtos = await api.getRaceDto(raceId, lapsValue, track);
+                    var raceDtos = await api.postRaceDto(raceId, lapsValue, track);
                     races.push(raceDtos);
                 }
 
