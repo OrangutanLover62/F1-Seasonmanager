@@ -52,21 +52,19 @@ public class RaceController {
             @RequestParam(required = true) Integer laps,
             @RequestBody TrackDto track
     ) {
-        return new RaceDto()
+        RaceDto raceToSave = new RaceDto()
                 .setId(id)
                 .setLaps(laps)
                 .setTrack(track);
+
+        raceService.save(raceToSave);
+        return raceToSave;
     }
 
     @GetMapping("/findById")
     public RaceDto getById(
             @RequestParam(required = true) String id
     ) {
-        try {
-
             return raceService.findById(id);
-        } catch (Exception e) {
-            return null;
-        }
     }
 }

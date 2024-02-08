@@ -34,6 +34,27 @@ const api = (function () {
         return res;
     }
 
+        async function syncget(endpoint){
+            var responseDto;
+            await $.ajax({
+              url: '/api' + endpoint,
+              type: 'GET',
+              contentType: 'application/json',
+              async: false, // Set async to false for synchronous request
+              success: function(response) {
+                // Request was successful
+                res = response;
+              },
+              error: function(xhr, status, error) {
+                // Handle errors
+                console.error('Error:', status, error);
+              }
+            });
+            return responseDto;
+        }
+
+
+
 
     return {
         createDriver: function (newDriver) {
@@ -77,8 +98,8 @@ const api = (function () {
             return get('/season/byId?id=' + id);
         },
         getSeasonDto: function (id) {
-                    return get('/season/byId?id=' + id);
-                },
+            return get('/season/byId?id=' + id);
+        },
         createSeason: function (seasonName, races, drivers) {
             let payload = {
                 name: seasonName,
@@ -94,9 +115,6 @@ const api = (function () {
                 track: track,
                 drivers: drivers
             };
-            console.log(race);
-            console.log(track);
-            console.log(drivers);
             return post('/edit/race', payload);
         }
     };

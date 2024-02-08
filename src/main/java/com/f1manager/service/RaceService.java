@@ -62,6 +62,13 @@ public class RaceService {
     }
 
     public RaceDto findById(String id){
+        RaceDao race = raceRepository.findById(id).orElse(null);
         return daoDtoConverter(raceRepository.findById(id).orElse(null)) ;
+    }
+
+    public void save(RaceDto race){
+
+        raceRepository.save(dtoDaoConverter(race));
+
     }
 }
