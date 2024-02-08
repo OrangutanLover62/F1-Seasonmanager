@@ -88,8 +88,8 @@ const api = (function () {
         getDriverDto: function (id) {
             return syncpost('/driver/findById?id=' + id);
         },
-        postRaceDto: function (id, laps, track) {
-            return syncpost('/race/generateById?id=' + id + '&laps=' + laps, track);
+        postRaceDto: function (id, seasonId, laps, track) {
+            return syncpost('/race/generateById?id=' + id + '&seasonId=' + seasonId + '&laps=' + laps, track);
         },
         getRaceDto: function (id) {
             return get('/race/findById?id=' + id);

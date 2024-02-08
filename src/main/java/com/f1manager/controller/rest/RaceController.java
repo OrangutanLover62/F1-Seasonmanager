@@ -49,11 +49,13 @@ public class RaceController {
     @PostMapping("/generateById")
     public RaceDto generateRaceDto(
             @RequestParam(required = true) String id,
+            @RequestParam(required = true) String seasonId,
             @RequestParam(required = true) Integer laps,
             @RequestBody TrackDto track
     ) {
         RaceDto raceToSave = new RaceDto()
                 .setId(id)
+                .setSeasonId(seasonId)
                 .setLaps(laps)
                 .setTrack(track);
 

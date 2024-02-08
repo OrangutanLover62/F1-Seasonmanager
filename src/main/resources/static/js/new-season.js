@@ -37,6 +37,14 @@ const newSeason = (function () {
     }
 
     return {
+        generateSeasonId: function () {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+            .replace(/[xy]/g, function (c) {
+                const r = Math.random() * 16 | 0,
+                    v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        },
         newDriver: function (newDriver, allDrivers) {
             api.createDriver(newDriver)
                 .done(function (response) {
@@ -74,7 +82,9 @@ const newSeason = (function () {
                     });
                 });
         },
+
         createSeason: async function () {
+            var seasonId = newSeason.generateSeasonId();
             var races = [];
             var raceFragments = document.getElementsByClassName('raceCreationView');
                 for (var i = 0; i < raceFragments.length; i++) {
@@ -92,7 +102,7 @@ const newSeason = (function () {
                         country: document.getElementById('trackCountry' + raceId).value,
                         imageBase64: document.getElementById('trackImage' + raceId).value
                     };
-                    var raceDtos = await api.postRaceDto(raceId, lapsValue, track);
+                    var raceDtos = await api.postRaceDto(raceId, seasonId, lapsValue, track);
                     races.push(raceDtos);
                 }
 
