@@ -1,15 +1,14 @@
 package com.f1manager.controller.web;
 
 import com.f1manager.model.dao.TrackDao;
-import com.f1manager.model.dto.RaceDto;
-import com.f1manager.model.dto.SeasonCreationDto;
-import com.f1manager.model.dto.SeasonDto;
+import com.f1manager.model.dto.*;
 import com.f1manager.service.SeasonService;
 import com.f1manager.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -68,16 +67,16 @@ public class NavigationController {
         return GlobalControllerAdvice.getTemplate(pathEditSeason);
     }
 
-    @GetMapping(pathEditRace)
+    @PostMapping(pathEditRace)
     public String editRace(
-            @RequestBody(required = true) RaceDto race,
-            @RequestBody(required = true) ArrayList<Driver> drivers,
+            @RequestBody(required = true) EditRaceDto raceToEdit,
             Model model ) {
 
-        model.addAttribute("id", race.getId());
-        model.addAttribute("track", race.getTrack());
-        model.addAttribute("drivers", drivers);
+        System.out.println(raceToEdit);
+        model.addAttribute("id", raceToEdit.getRace().getId());
+        model.addAttribute("track", raceToEdit.getTrack());
+        model.addAttribute("drivers", raceToEdit.getDrivers());
 
-        return GlobalControllerAdvice.getTemplate(pathEditSeason);
+        return GlobalControllerAdvice.getTemplate(pathEditRace);
     }
 }
