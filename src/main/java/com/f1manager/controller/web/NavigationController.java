@@ -1,20 +1,16 @@
 package com.f1manager.controller.web;
 
-import com.f1manager.model.dao.TrackDao;
 import com.f1manager.model.dto.*;
+import com.f1manager.service.RaceService;
 import com.f1manager.service.SeasonService;
 import com.f1manager.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.sql.Driver;
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Controller
 public class NavigationController {
@@ -27,11 +23,13 @@ public class NavigationController {
     @Autowired
     private final TrackService trackService;
     private final SeasonService seasonService;
+    private final RaceService raceService;
 
     @Autowired
-    public NavigationController(TrackService trackService, SeasonService seasonService) {
+    public NavigationController(TrackService trackService, SeasonService seasonService, RaceService raceService) {
         this.trackService = trackService;
         this.seasonService = seasonService;
+        this.raceService = raceService;
     }
 
 
@@ -67,15 +65,17 @@ public class NavigationController {
         return GlobalControllerAdvice.getTemplate(pathEditSeason);
     }
 
-    @PostMapping(pathEditRace)
+    @GetMapping(pathEditRace)
     public String editRace(
-            @RequestBody(required = true) EditRaceDto raceToEdit,
+            @RequestParam(required = true) String id,
+            @RequestParam(required = true) ArrayList<String> driverIds,
             Model model ) {
 
-        System.out.println(raceToEdit);
-        model.addAttribute("id", raceToEdit.getRace().getId());
-        model.addAttribute("track", raceToEdit.getTrack());
-        model.addAttribute("drivers", raceToEdit.getDrivers());
+        System.out.println(id);
+        RaceDto race = raceService.findById(id);
+        model.addAttribute("id", race.getId());
+        model.addAttribute("track", race.getTrack());
+        model.addAttribute("drivers", driverIds);
 
         return GlobalControllerAdvice.getTemplate(pathEditRace);
     }

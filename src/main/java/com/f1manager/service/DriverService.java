@@ -82,6 +82,7 @@ public class DriverService {
 
     public DriverDao dtoDaoConverter(DriverDto driverDto) {
         return new DriverDao()
+            .setId(driverDto.getId())
             .setFirstname(driverDto.getFirstname())
             .setLastname(driverDto.getLastname())
             .setImageBase64(driverDto.getImageBase64());

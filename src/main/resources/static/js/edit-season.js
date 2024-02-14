@@ -2,12 +2,13 @@ const editSeason = (function () {
 
     return {
         editRace: async function (raceId, seasonId) {
-
+            var driverIds = [];
             var season = await api.getSeasonDto(seasonId);
-            var drivers = season.drivers;
-            var race = await api.getRaceDto(raceId);
-            var track = race.track;
-            api.editRaceResults(race, track, drivers);
+            season.drivers.forEach((driver) => {
+              driverIds.push(driver.id);
+              console.log(driver.id);
+            });
+            navigation.editRace(raceId, driverIds);
         }
     };
 })();

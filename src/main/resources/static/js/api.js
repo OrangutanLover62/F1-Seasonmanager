@@ -109,13 +109,8 @@ const api = (function () {
 
             return post('/season/create', payload);
         },
-        editRaceResults: function (race, track, drivers) {
-            let payload = {
-                race: race,
-                track: track,
-                drivers: drivers
-            };
-            return post('/edit/race', payload);
+        editRaceResults: function (id) {
+            return get('/edit/race?id=' + id);
         }
     };
 })();

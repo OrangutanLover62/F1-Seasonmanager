@@ -27,6 +27,9 @@ const navigation = (function () {
         },
         newSeason: function () {
             redirect('/new/season');
+        },
+        editRace: function (id, driverIds) {
+            redirect('/edit/race?id=' + id + '&driverIds=' + driverIds);
         }
     };
 })();
